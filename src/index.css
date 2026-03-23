@@ -1,0 +1,143 @@
+﻿@import "tailwindcss";
+
+@theme {
+  --color-primary: #1D39C9;
+  --color-primary-light: rgba(29, 57, 201, 0.05);
+  --color-primary-border: rgba(29, 57, 201, 0.2);
+  --color-primary-glow: rgba(29, 57, 201, 0.3);
+  --color-bg-deep: #F0F9FF;
+  --color-bg-section: rgba(242, 244, 253, 0.3);
+  --color-bg-card: rgba(255, 255, 255, 0.4);
+  --color-bg-glass: rgba(255, 255, 255, 0.3);
+  --color-border-glass: rgba(255, 255, 255, 0.6);
+  --color-border-card: rgba(255, 255, 255, 0.5);
+  --color-text-dark: #181920;
+  --color-text-body: rgba(24, 25, 32, 0.8);
+  --color-text-muted: #9194A1;
+  --color-text-light: rgba(24, 25, 32, 0.7);
+  --font-heading: "DM Sans", system-ui, sans-serif;
+  --font-body: "Noto Sans", system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: linear-gradient(180deg, #F0F9FF 0%, #ffffff 50%, #F8FAFC 100%);
+  color: var(--color-text-dark);
+  font-family: var(--font-body);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(29, 57, 201, 0.15);
+  color: #181920;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(29, 57, 201, 0.2); border-radius: 3px; }
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 12px;
+  box-shadow: 0 16px 32px rgba(226, 232, 240, 0.5);
+}
+
+.glass-card-strong {
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 12px;
+  box-shadow: 0 16px 32px rgba(226, 232, 240, 0.5);
+  transition: box-shadow 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.glass-card-strong:hover {
+  box-shadow: 0 24px 48px rgba(226, 232, 240, 0.7), 0 0 0 1px rgba(255,255,255,0.8);
+}
+
+/* 3D card perspective container */
+.perspective-container {
+  perspective: 800px;
+}
+
+/* Premium button hover glow */
+.btn-glow {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.btn-glow:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 40px rgba(29, 57, 201, 0.35), 0 0 80px rgba(29, 57, 201, 0.1);
+}
+.btn-glow::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.2) 50%, transparent 70%);
+  transform: translateX(-100%);
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.btn-glow:hover::after {
+  transform: translateX(100%);
+}
+
+/* Secondary button hover */
+.btn-glass {
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              background 0.4s ease,
+              border-color 0.4s ease;
+}
+.btn-glass:hover {
+  transform: translateY(-2px);
+  background: rgba(255,255,255,0.5);
+  border-color: rgba(29, 57, 201, 0.2);
+}
+
+/* Smooth link underline animation */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 1.5px;
+  background: var(--color-primary);
+  border-radius: 1px;
+  transition: width 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              left 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.nav-link:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
